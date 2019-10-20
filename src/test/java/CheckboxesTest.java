@@ -25,7 +25,7 @@ public class CheckboxesTest {
         navigateToMainPage();
         countNumberOfCheckboxes();
         assertNumberOfCheckboxes();
-        checkFirstCheckboxIsDisplayed();
+        checkCheckboxIsDisplayed();
         checkFirstCheckboxIsSelected();
         selectUncheckedCheckbox();
         getAttributeValueFromCheckbox();
@@ -68,7 +68,7 @@ public class CheckboxesTest {
         String inputCheckedValue = input1.getAttribute("checked");
     }
 
-        private void checkFirstCheckboxIsDisplayed () {
+        private void checkCheckboxIsDisplayed () {
             List<WebElement> listOfInputs = driver.findElements(By.tagName("input"));
             WebElement input1 = listOfInputs.get(0);
             WebElement input2 = listOfInputs.get(1);

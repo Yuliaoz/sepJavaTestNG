@@ -18,24 +18,30 @@ public class CheckboxesTest {
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "C:\\Users\\iouli\\IdeaProjects\\sepJavaTestNG\\src\\test\\resources\\geckodriver.exe");
         driver = new FirefoxDriver();
-
     }
 
     @Test
     public void test005() {
         navigateToMainPage();
-        getNumberOfCheckboxes();
+        countNumberOfCheckboxes();
         assertNumberOfCheckboxes();
         checkCheckboxIsDisplayed();
         checkCheckboxIsSelected();
-        //assertCheckboxIsDisplayed();
         selectUncheckedCheckbox();
         getAttributeValueFromCheckbox();
+        assertCheckboxIsChecked();
 
-
+        //assertCheckboxIsDisplayed();
         // Assert.assertTrue(isinputDisplayed);
+    }
 
-        //   Assert.assertEquals(inputCheckedValue, "true");
+    private void assertCheckboxIsChecked() {
+        List<WebElement> listOfInputs = driver.findElements(By.tagName("input"));
+        WebElement input1 = listOfInputs.get(0);
+        WebElement input2 = listOfInputs.get(1);
+        String inputCheckedValue = input1.getAttribute("checked");
+        Assert.assertEquals(inputCheckedValue, "true");
+
     }
 
     private void getAttributeValueFromCheckbox() {
@@ -67,6 +73,7 @@ public class CheckboxesTest {
             WebElement input1 = listOfInputs.get(0);
             WebElement input2 = listOfInputs.get(1);
             boolean isInputDisplayed = input1.isDisplayed();
+
         }
 
         private void assertNumberOfCheckboxes () {
@@ -76,11 +83,10 @@ public class CheckboxesTest {
             Assert.assertTrue(numberOfInputs == 2);
         }
 
-        private void getNumberOfCheckboxes () {
+        private void countNumberOfCheckboxes () {
             driver.findElements(By.tagName("input"));
             List<WebElement> listOfInputs = driver.findElements(By.tagName("input"));
             int numberOfInputs = listOfInputs.size();
-
         }
 
         private void navigateToMainPage () {
